@@ -3,6 +3,7 @@
 A support-focused SQL investigation lab built to demonstrate how I approach data troubleshooting in a technical support environment.
 
 This project simulates common production support scenarios such as:
+
 - investigating failed verifications
 - identifying duplicate user records
 - tracing webhook delivery failures
@@ -11,7 +12,7 @@ This project simulates common production support scenarios such as:
 
 ## Purpose
 
-I built this lab to show practical SQL usage in a support engineering context rather than a pure analytics or database engineering context. The goal is to reflect the kind of investigation work involved in technical support roles where SQL helps confirm patterns, isolate impact, and speed up root cause analysis.
+I built this lab to show practical SQL usage in a support engineering context rather than a pure analytics or database engineering context. The goal is to reflect investigation work where SQL helps confirm patterns, isolate impact, and speed up root cause analysis.
 
 ## Tech Stack
 
@@ -19,19 +20,44 @@ I built this lab to show practical SQL usage in a support engineering context ra
 - SQLite
 - SQL
 
+## Quick Start
+
+```bash
+python scripts/seed_db.py
+python scripts/report.py
+```
+
+The seed script creates `db/support_lab.db` with sample users, verifications, webhook deliveries, and incident records.
+
 ## Project Structure
 
 ```text
-sql-support-lab/
-├── README.md
-├── requirements.txt
-├── db/
-│   └── support_lab.db
-├── queries/
-│   ├── failed_verifications.sql
-│   ├── duplicate_users.sql
-│   ├── webhook_failures.sql
-│   ├── incident_correlation.sql
-│   └── latency_analysis.sql
-└── scripts/
-    └── seed_data.py
+SQL-lab/
+??? README.md
+??? requirements.txt
+??? db/
+?   ??? .gitkeep
+??? docs/
+?   ??? sample_support_escalation.md
+??? queries/
+?   ??? duplicate_failed_webhooks.sql
+?   ??? duplicate_users.sql
+?   ??? failed_verifications.sql
+?   ??? incident_pattern_summary.sql
+?   ??? users_without_completed_verification.sql
+??? scripts/
+    ??? report.py
+    ??? seed_db.py
+```
+
+## Queries Included
+
+- `failed_verifications.sql`: recent failed verification attempts and failure reasons
+- `duplicate_users.sql`: duplicate customer email records
+- `users_without_completed_verification.sql`: users missing an approved verification
+- `duplicate_failed_webhooks.sql`: repeated failed webhook deliveries
+- `incident_pattern_summary.sql`: recurring incident signatures and timing
+
+## Suggested GitHub Pin Description
+
+SQL troubleshooting lab for support engineering investigations, failed verifications, webhook failures, and incident pattern analysis.
