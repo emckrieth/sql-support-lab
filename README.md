@@ -29,6 +29,29 @@ python scripts/report.py
 
 The seed script creates `db/support_lab.db` with sample users, verifications, webhook deliveries, and incident records.
 
+## How This Maps to Production Support
+
+This lab demonstrates how SQL can support production incident investigation:
+
+- identify failed transactions or verifications by status, timestamp, and failure reason
+- detect duplicate user records that may create workflow or customer-impact issues
+- find users missing a completed verification
+- investigate repeated webhook delivery failures
+- summarize recurring incident signatures for problem management
+
+The sample database uses SQLite so the project is easy to run locally. The same query patterns translate to PostgreSQL and other production relational databases commonly used in cloud environments.
+
+## ITIL-Style Support Practices Reflected
+
+- **Incident management:** quickly isolate affected records and failure patterns.
+- **Problem management:** group recurring error signatures to identify repeat issues.
+- **Change validation:** rerun queries after remediation to confirm the data state improved.
+- **Knowledge management:** document the support workflow and escalation summary.
+
+## PostgreSQL Notes
+
+Most queries in this lab use portable SQL. In PostgreSQL, the same investigations would typically run against production tables with indexed timestamp, status, and foreign-key columns. For larger datasets, I would add time-window filters, inspect query plans with `EXPLAIN`, and validate join behavior before using query results in an escalation.
+
 ## Project Structure
 
 ```text
@@ -38,12 +61,14 @@ SQL-lab/
 ??? db/
 ?   ??? .gitkeep
 ??? docs/
+?   ??? production_support_playbook.md
 ?   ??? sample_support_escalation.md
 ??? queries/
 ?   ??? duplicate_failed_webhooks.sql
 ?   ??? duplicate_users.sql
 ?   ??? failed_verifications.sql
 ?   ??? incident_pattern_summary.sql
+?   ??? postgres_recent_failures.sql
 ?   ??? users_without_completed_verification.sql
 ??? scripts/
     ??? report.py
@@ -57,6 +82,7 @@ SQL-lab/
 - `users_without_completed_verification.sql`: users missing an approved verification
 - `duplicate_failed_webhooks.sql`: repeated failed webhook deliveries
 - `incident_pattern_summary.sql`: recurring incident signatures and timing
+- `postgres_recent_failures.sql`: PostgreSQL-style recent failure analysis with a time window
 
 ## Suggested GitHub Pin Description
 
