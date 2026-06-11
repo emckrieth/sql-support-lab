@@ -56,23 +56,23 @@ Most queries in this lab use portable SQL. In PostgreSQL, the same investigation
 
 ```text
 SQL-lab/
-??? README.md
-??? requirements.txt
-??? db/
-?   ??? .gitkeep
-??? docs/
-?   ??? production_support_playbook.md
-?   ??? sample_support_escalation.md
-??? queries/
-?   ??? duplicate_failed_webhooks.sql
-?   ??? duplicate_users.sql
-?   ??? failed_verifications.sql
-?   ??? incident_pattern_summary.sql
-?   ??? postgres_recent_failures.sql
-?   ??? users_without_completed_verification.sql
-??? scripts/
-    ??? report.py
-    ??? seed_db.py
+|-- README.md
+|-- requirements.txt
+|-- db/
+|   `-- .gitkeep
+|-- docs/
+|   |-- production_support_playbook.md
+|   `-- sample_support_escalation.md
+|-- queries/
+|   |-- duplicate_failed_webhooks.sql
+|   |-- duplicate_users.sql
+|   |-- failed_verifications.sql
+|   |-- incident_pattern_summary.sql
+|   |-- postgres_recent_failures.sql
+|   `-- users_without_completed_verification.sql
+`-- scripts/
+    |-- report.py
+    `-- seed_db.py
 ```
 
 ## Queries Included
